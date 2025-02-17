@@ -717,7 +717,7 @@ header .navbar a:hover{
 
 .Regcontainer .user-details .input-box select{
     height: 45px;
-    width: 640px;
+    width: 100%;
     outline: none;
     border: 1px solid var(--lightgray);
     border-radius: 5px;
