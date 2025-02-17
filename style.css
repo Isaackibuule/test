@@ -1091,17 +1091,10 @@ Regform .button input:hover{
     .user-details::-webkit-scrollbar{
         width: 0;
     }
-     Regform .input-box select{
+     Regcontainer .input-box select{
         width: 100%;
         font-size: 14px;
     }
 }
 
 
-
-@media (max-width: 584px) {
-    .input-box select {
-       
-        font-size: 14px;
-    }
-}
