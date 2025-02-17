@@ -1091,4 +1091,8 @@ Regform .button input:hover{
     .user-details::-webkit-scrollbar{
         width: 0;
     }
+     .input-box select{
+        width: 100%;
+        font-size: 14px;
+    }
 }
