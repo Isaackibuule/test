@@ -738,7 +738,27 @@ header .navbar a:hover{
 }
 
 
-
+.Regcontainer .input-box select{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--lightgray);
+    border-radius: 5px;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 1px;
+    transition: all 0.3s ease;
+    background-color: var(--white);
+    text-align: center;
+    z-index: 1;
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: var(--whisper); /*dropdown background*/
+    color:var(--darkgray);   /*font color dropdown change*/
+    
+}
 
 
 
@@ -1097,5 +1117,8 @@ Regform .button input:hover{
     .user-details::-webkit-scrollbar{
         width: 0;
     }
- 
+     .input-box select{
+        width: 100%;
+        font-size: 14px;
+    }
 }
