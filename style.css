@@ -1096,3 +1096,12 @@ Regform .button input:hover{
         font-size: 14px;
     }
 }
+
+
+
+@media (max-width: 584px) {
+    .input-box select {
+        width: 100%;
+        font-size: 14px;
+    }
+}
