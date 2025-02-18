@@ -217,4 +217,60 @@
         margin-top: 1rem;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Add this to your existing CSS file (style.css) */
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        background: var(--white);
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        border-bottom: .1rem solid rgba(0, 0, 0, .2);
+    }
+
+    .navbar.active {
+        display: flex;
+    }
+
+    .navbar a {
+        width: 100%;
+        padding: 1rem;
+        text-align: left;
+    }
+
+    #menu {
+        display: initial;
+        font-size: 2.5rem;
+        cursor: pointer;
+    }
+}
 </style>
+
+
+
