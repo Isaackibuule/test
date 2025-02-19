@@ -1133,18 +1133,9 @@ Regform .button input:hover{
 
 /* map */
 
+
 @media (max-width: 768px) {
-    .Mapcontainer {
-        height: auto;
-    }
-
     .Mapcontainer iframe {
-        height: 300vh;
-    }
-}
-
-@media (max-width: 480px) {
-    .Mapcontainer iframe {
-        height: 20vh;
+        height: 40vh; /* Adjust the height for smaller screens */
     }
 }
