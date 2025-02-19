@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbox</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+
+        :root{
+    --violet:#6c5ce7;
+    --pink: #fc427b;
+    --white: #fff;
+    --lightgray: #ccc;
+    --darkgray: #333;
+    --gray: #666;
+    --mediumgray: #888;
+    --lightergray: #eee;
+    --charcoalgray:#222;
+    --whisper:#f5f5f5;
+    --silver:#aaa;
+    --gainsboro: #d9d9d9;
+    --black: #000;
+    --gradient: linear-gradient(90deg, var(--violet), var(--pink));
+
+        }
+
+
+        
+
+        #chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 50px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-container {
+            width: 400px;
+            height: 500px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            bottom: 100px;
+            right: 80px;
+            border-radius: 15px;
+            overflow: hidden;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s linear, visibility 0.5s linear;
+        }
+
+        .chat-header {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto; /* Enable vertical scrolling */
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            display: none; /* Initially hidden */
+        }
+
+        .chat-footer {
+            padding: 10px;
+            display: flex;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            display: none; /* Initially hidden */
+        }
+
+        
+
+        .chat-footer input {
+            flex: 1; 
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+        
+            
+        }
+
+        #user-input{
+            flex: 1;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            margin-right: 10px;
+        }
+
+
+
+
+#user-input:focus{
+    border-color: rgb(223, 13, 48);
+    outline: none;
+    box-shadow: 0 0 5px rgb(214, 39, 191);
+}
+        
+
+        .chat-footer button {
+            padding: 10px 20px;
+            border: none;
+            background-color: rgb(74, 193, 223);
+            color: #fff;
+            border-radius: 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .chat-footer button:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            max-width: 80%;
+            word-wrap: break-word; /* Ensure long words break to fit within the container */
+        }
+
+        .message.sent {
+            align-self: flex-end; /* Align sent messages to the right */
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .message.received {
+            align-self: flex-start; /* Align received messages to the left */
+            background-color: #e1e1e1;
+            text-align: left;
+        }
+
+        .form-container {
+            /* display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; */
+            height: 100%; /* Full height to center the form */
+            background-color: #fff;
+            padding: 20px;
+        }
+
+
+        
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .form-container input:invalid {
+            border-color: red;
+        }
+
+        .form-container input:invalid + .error-message {
+            display: block;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* .error-message {
+            color: red;
+            font-size: 12px; */
+            /* display: none; Initially hidden */
+            /* position: absolute;
+            top: 100%;
+            left: 10px;
+        } */
+
+        .error-message {
+            color: rgb(11, 243, 11);
+            font-size: 12px;
+            position:absolute;
+            top: 100%;
+            left: 10px;
+        }
+
+        .required-asterisk {
+            color: red;
+            margin-left: 5px;
+        }
+
+
+
+    .form-container form{
+    /* padding: 10px 15px;
+    margin: 20px 0;
+    border-radius: 25px;
+    border: 1px solid lightgrey; */
+    padding: 10px 15px;
+    border: 1px solid lightgrey;
+    border-radius: 25px;
+    margin: 20px 0;
+
+}
+
+
+
+    </style>
+
+
+<style>
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body{
+        overflow: hidden;
+        background: #f2f2f2;
+    }
+    
+    #click{
+        display: none;
+    }
+    
+    label{
+        position: absolute;
+        right: 30px;
+        bottom: 20px;
+        height: 55px;
+        width: 55px;
+        background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+        text-align: center;
+        line-height: 55px;
+        border-radius: 50px;
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+    }
+    
+    label i{
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.4s ease;
+    }
+    
+    label i.fas{
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    #click:checked ~ label i.fas{
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+    
+    #click:checked ~ label i.fab{
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+    
+    
+    
+    #click:checked ~ .chat-container{
+        opacity: 1;
+        bottom: 85px;
+        pointer-events: auto;
+    
+    }
+    
+    .chat-container .chat-header{
+        line-height: 60px;
+        color: #fff;
+        border-radius: 15px 15px 0 0;
+        padding: 0 20px;
+        font-weight: 500;
+        font-size: 20px;
+        background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+    }
+    
+    .chat-container .form-container{
+        padding: 20px;
+        width: 100%;
+        /* height: 300px; */
+        /* overflow-y: auto; */
+    }
+    
+    .form-container .desc-text{
+        color: #515365;
+        font-size: 16px;
+        text-align: center;
+        line-height: 25px;
+        font-weight: 500;
+    
+    }
+    
+    .form-container form{
+        padding: 10px 15px;
+        margin: 20px 0;
+        border-radius: 25px;
+        border: 1px solid lightgrey;
+    
+    }
+    
+    /* .form-container form .field{
+        height: 50px;
+        width: 100%;
+        margin-top: 20px;
+         
+    
+    } */
+
+
+    .form-container form .field{
+        height: 50px;
+        width: 100%;
+       margin-top: 20px;
+       margin-bottom: 10px;
+         
+    
+    }
+    
+    
+    .form-container form .field:last-child{
+        margin-bottom: 15px;
+    }
+    form .field input,
+    form .field button,
+    form .textarea textarea{
+        width: 100%;
+        height: 100%;
+        padding-left: 20px;
+        border: 1px solid lightgrey; 
+        outline: none;  
+        border-radius: 25px;
+        font-size: 16px;
+        transition: all 0.3s ease; 
+    }
+    
+    form .field input:focus,
+    form .textarea textarea:focus{
+        border-color: #fc83bb;
+    }
+    
+    form .field input::placeholder,
+    form .textarea textarea::placeholder{
+        color: silver;
+        transition: all 0.3s ease; 
+    }
+    
+    
+    form .field input:focus::placeholder,
+    form .textarea textarea:focus::placeholder{
+        color: lightgray;
+    
+    }
+    
+    
+    
+    .form-container form .textarea{
+        height: 70px;
+        width: 100%;
+    
+    }
+    
+    .form-container form .textarea textarea{
+        resize: none;
+        height: 100%;
+        border-radius: 50px;
+        padding: 15px 20px;
+        font-size: 16px;
+    
+    }
+    
+    .form-container form .field button{
+        border: none;
+        background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+        color: #fff;
+        outline: none;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    
+    }
+    
+    .form-container form .field button:active{
+        transform: scale(0.97);
+    }
+    
+    </style>
+
+</head>
+<body>
+    <button id="chat-button">?</button>
+
+    <div class="chat-container">
+        <div class="chat-header">Chat Header</div>
+        <div id="form-box" class="form-container">
+            <div class="desc-text">Please fill out the form below to start chatting with the team.</div> 
+
+
+            <form action="#">
+            <div  class="field"  style="position: relative; width: 100%;">
+                <input type="text" id="user-name" placeholder="Enter your name" required>
+                <span class="required-asterisk">*</span>
+                <div id="name-error" class="error-message">This field is required and must contain only alphabets</div>
+            </div>
+            <div class="field" style="position: relative; width: 100%;">
+                <input type="text" id="user-contact" placeholder="Enter your contact" required>
+                <span class="required-asterisk">*</span>
+                <div id="contact-error" class="error-message">This field is required and must contain only digits</div>
+            </div>
+            <div class="field">
+            <button id="start-chat-btn">Start Chat</button>
+            </div>
+        </form>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <!-- Messages will be appended here -->
+        </div>
+        <div id="chat-footer" class="chat-footer">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("chat-button").onclick = function() {
+            var chatContainer = document.querySelector(".chat-container");
+            var chatButton = document.getElementById("chat-button");
+
+            if (chatContainer.style.visibility === "hidden" || chatContainer.style.visibility === "") {
+                chatContainer.style.visibility = "visible";
+                chatContainer.style.opacity = "1";
+                chatButton.textContent = "✖"; // Change icon to "x"
+            } else {
+                chatContainer.style.visibility = "hidden";
+                chatContainer.style.opacity = "0";
+                chatButton.textContent = "?"; // Change icon back to "?"
+            }
+        };
+
+        document.getElementById("start-chat-btn").onclick = function() {
+            var userName = document.getElementById("user-name").value.trim();
+            var userContact = document.getElementById("user-contact").value.trim();
+            var nameError = document.getElementById("name-error");
+            var contactError = document.getElementById("contact-error");
+
+            // Regular expressions for validation
+            var nameRegex = /^[A-Za-z]+$/;
+            var contactRegex = /^[0-9]+$/;
+
+            if (userName === "" || !nameRegex.test(userName)) {
+                nameError.style.display = "block";
+            } else {
+                nameError.style.display = "none";
+            }
+
+            if (userContact === "" || !contactRegex.test(userContact)) {
+                contactError.style.display = "block";
+            } else {
+                contactError.style.display = "none";
+            }
+
+            if (nameRegex.test(userName) && contactRegex.test(userContact)) {
+                localStorage.setItem("userName", userName);
+                localStorage.setItem("userContact", userContact);
+                document.getElementById("form-box").style.display = "none";
+                document.getElementById("chat-body").style.display = "block";
+                document.getElementById("chat-footer").style.display = "flex";
+            }
+        };
+
+        document.getElementById('send-btn').addEventListener('click', function() {
+            var userInput = document.getElementById('user-input').value;
+            if (userInput.trim() !== '') {
+                var chatBody = document.getElementById('chat-body');
+                
+                // Add user message
+                var userMessage = document.createElement('div');
+                userMessage.classList.add('message', 'sent');
+                userMessage.textContent = userInput;
+                chatBody.appendChild(userMessage);
+
+                // Save message to localStorage
+                saveMessageToLocalStorage('sent', userInput);
+
+                // Clear input
+                document.getElementById('user-input').value = '';
+
+                // Scroll to the bottom of the chat container
+                chatBody.scrollTop = chatBody.scrollHeight;
+
+                // Simulate bot response
+                setTimeout(function() {
+                    var botMessage = document.createElement('div');
+                    botMessage.classList.add('message', 'received');
+                    botMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+                    chatBody.appendChild(botMessage);
+
+                    // Save bot message to localStorage
+                    saveMessageToLocalStorage('received', botMessage.textContent);
+
+                    // Scroll to the bottom
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }, 1000);
+            }
+        });
+
+        // Allow pressing Enter to send message
+        document.getElementById('user-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                document.getElementById('send-btn').click();
+            }
+        });
+
+        // Save message to localStorage
+        function saveMessageToLocalStorage(type, message) {
+            var messages = JSON.parse(localStorage.getItem('messages')) || [];
+            messages.push({ type: type, message: message });
+            localStorage.setItem('messages', JSON.stringify(messages));
+        }
+
+        // Load messages from localStorage
+        function loadMessagesFromLocalStorage() {
+            var messages = JSON.parse(localStorage.getItem('messages')) || [];
+            var chatBody = document.getElementById('chat-body');
+            messages.forEach(function(msg) {
+                var messageElement = document.createElement('div');
+                messageElement.classList.add('message', msg.type);
+                messageElement.textContent = msg.message;
+                chatBody.appendChild(messageElement);
+            });
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Check if user info is saved in localStorage
+        function checkUserInfo() {
+            var userName = localStorage.getItem("userName");
+            var userContact = localStorage.getItem("userContact");
+            if (userName && userContact) {
+                document.getElementById("form-box").style.display = "none";
+                document.getElementById("chat-body").style.display = "block";
+                document.getElementById("chat-footer").style.display = "flex";
+                loadMessagesFromLocalStorage();
+            }
+        }
+
+        // Initialize chat
+        checkUserInfo();
+    </script>
+</body>
+</html>
