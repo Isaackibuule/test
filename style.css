@@ -1134,7 +1134,7 @@ Regform .button input:hover{
 /* map */
 
 
-    @media (max-width: 768px) {
+    /*@media (max-width: 768px) {
     .Mapcontainer {
         height: auto;
     }
@@ -1147,5 +1147,11 @@ Regform .button input:hover{
 @media (max-width: 480px) {
     .Mapcontainer iframe {
         height: 20vh;
+    }
+}*/
+
+@media (max-width: 768px) {
+    .Mapcontainer iframe {
+        height: 40vh; /* Adjust the height for smaller screens */
     }
 }
