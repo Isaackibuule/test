@@ -1,37 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap'); */
 
-:root{
+/* :root{
     --violet:#6c5ce7;
     --pink: #fc427b;
     --gradient: linear-gradient(90deg, var(--violet), var(--pink));
 }
+ */
 
-html{
-    font-size: 62.5%;
-    overflow-x: hidden;
 
+:root{
+    --violet:#6c5ce7;
+    --pink: #fc427b;
+    --white: #fff;
+    --lightgray: #ccc;
+    --darkgray: #333;
+    --gray: #666;
+    --mediumgray: #888;
+    --lightergray: #eee;
+    --charcoalgray:#222;
+    --whisper:#f5f5f5;
+    --silver:#aaa;
+    --gainsboro: #d9d9d9;
+    --black: #000;
+    --gradient: linear-gradient(90deg, var(--violet), var(--pink));
 }
 
-html::-webkit-scrollbar{
-    width: 1rem;
-}
-
-html::-webkit-scrollbar-track{
-    background: #333;
-}
-
-html::-webkit-scrollbar-thumb{
-    background: #fff;
-    border-radius: 5rem;
-
-}
-
-body{
-    background: var(--gradient); 
-    padding: 3rem 7%;
-    padding-bottom: 9rem;
-}
-    
 
 
 .dark-theme{
@@ -39,7 +32,7 @@ body{
     --pink: #fc427b;
     --white: #222; /* Dark mode adjustment */
     --lightgray: #666; /* Dark mode adjustment */
-    --darkgray: #f5f5f5; /* Dark mode adjustment */
+    --darkgray: #919191; /* Dark mode adjustment */
     --gray: #d9d9d9; /* Dark mode adjustment */
     --mediumgray: #ccc; /* Dark mode adjustment */
     --lightergray: #888; /* Dark mode adjustment */
@@ -108,15 +101,32 @@ body{
 
 }
 
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
 
+}
 
+html::-webkit-scrollbar{
+    width: 1rem;
+}
 
+html::-webkit-scrollbar-track{
+    background: var(--darkgray);
+}
 
+html::-webkit-scrollbar-thumb{
+    background: var(--white);
+    border-radius: 5rem;
 
+}
 
-
-
-
+body{
+    background: var(--gradient); 
+    padding: 3rem 7%;
+    padding-bottom: 9rem;
+}
+    
 
 
 *{
@@ -130,12 +140,36 @@ body{
 
 }
 
+/* 
+#icon {
+    width: 30px;
+    cursor: pointer;
+    margin-left: 30px;
+} */
+
+
+#logo {
+    width: 30px;
+    cursor: pointer;
+    margin-right: 15px;
+    fill: var(--pink);
+   
+}
+
+
+header .navbar{
+    flex: 1;
+    text-align: right;
+}
+
+
+
 section{
     padding: 2rem 7%;
 
 }
 .container{
-    background: #fff;
+    background: var(--white);
     border-radius: .5rem;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
@@ -157,8 +191,8 @@ section{
     margin-top: 1rem;
     padding: .8rem 3rem;
     border-radius: .5rem;
-    background: #333;
-    color: #fff;
+    background: var(--darkgray);
+    color: var(--white);
     cursor: pointer;
     font-size: 1.7rem;
 
@@ -198,7 +232,7 @@ header .academy{
 header .navbar a{
     margin-left: 2rem;
     font-size: 2rem;
-    color: #333;
+    color: var(--darkgray);
 }
 
 header .navbar a:hover{
@@ -247,7 +281,7 @@ header .navbar a:hover{
 .home .content p{
     padding: .5rem 0;
     font-size: 1.7rem;
-    color: #666;
+    color: var(--gray);
 }
 
 
@@ -278,7 +312,7 @@ header .navbar a:hover{
     font-size: 2rem;
     padding: .5rem 1rem;
     background: var(--pink);
-    color: #fff;
+    color: var(--white);
     border-radius: .5rem;
 }
 
@@ -295,7 +329,7 @@ header .navbar a:hover{
 }
 
 .course .box p{
-    color: #666;
+    color: var(--gray);
     font-size: 1.5rem;
     padding: .5rem 0;
 }
@@ -311,7 +345,7 @@ header .navbar a:hover{
 }
 
 .course .icons p{
-    color: #666;
+    color: var(--gray);
     font-size: 1.3rem; 
 }
 
@@ -353,7 +387,7 @@ header .navbar a:hover{
 }
 
 .teacher .box p{
-    color: #666;
+    color: var(--gray);
     font-size: 1.5rem;
 }
 
@@ -366,7 +400,7 @@ header .navbar a:hover{
     background: var(--pink);
     border-radius: .5rem;
     margin: .3rem;
-    color: #fff;
+    color: var(--white);
 }
 
 .teacher .box .share a:hover{
@@ -392,13 +426,13 @@ header .navbar a:hover{
 
 .price .box h3{
     font-size: 2.5rem;
-    color: #333;
+    color: var(--darkgray);
     padding: 1.5rem 0;
 }
 
 .price .box .amount{
     font-size: 4.5rem;
-    color: #fff;
+    color: var(--white);
     padding: 1rem 0;
     background: var(--gradient);
     font-weight: bold;
@@ -419,7 +453,7 @@ header .navbar a:hover{
 .price .box ul li{
     padding: .7rem 0;
     font-size: 1.7rem;
-    color: #666;
+    color: var(--gray);
 }
 
 .price .box .btn{
@@ -471,7 +505,7 @@ header .navbar a:hover{
 
 .review .box .student .student-info h3{
     font-size: 2rem;
-    color: #333;
+    color: var(--darkgray);
 }
 
 .review .box .student .student-info span{
@@ -483,7 +517,7 @@ header .navbar a:hover{
 .review .box .text{
     padding: 1rem 0;
     font-size: 1.7rem;
-    color: #666;
+    color: var(--gray);
 
 }
 
@@ -525,7 +559,8 @@ header .navbar a:hover{
     border: .1rem solid rgba(0, 0, 0, .1);
     border-radius: .5rem;
     text-transform:none;
-    color: #333; 
+    color: var(--darkgray); 
+    background-color: var(--white);
     
 }
 
@@ -544,6 +579,221 @@ header .navbar a:hover{
     height: 20rem;
     resize: none;
 }
+
+
+
+
+.center {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+.center button{
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--charcoalgray);
+    background: var(--whisper);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.popup {
+    position: absolute;
+    top: -150%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.25);
+    width: 680px;
+    padding: 20px 30px;
+    background: var(--white);
+    box-shadow: 2px 2px 5px 5px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    transition: top 0ms ease-in-out 200ms,
+                opacity 200ms ease-in-out 0ms,
+                transform 200ms ease-in-out 0ms;
+                z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup.active{
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition: top 0ms ease-in-out 0ms,
+                opacity 200ms ease-in-out 0ms,
+                transform 200ms ease-in-out 0ms;
+}
+
+.popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    background: var(--mediumgray);
+    color: var(--lightergray);
+    text-align: center;
+    line-height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.popup .form h2 {
+    text-align: center;
+    color: var(--charcoalgray);
+    margin: 10px 0px 20px;
+    font-size: 25px;
+ 
+}
+
+.popup .form .form-element {
+    margin: 15px 0px;
+}
+
+.popup .form .form-element label {
+    font-size: 14px;
+    color: var(--charcoalgray);
+}
+
+.popup .form .form-element input[type="text"],
+.popup .form .form-element input[type="password"] {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid var(--silver);
+    border-radius: 5px;
+}
+
+.popup .form .form-element input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.popup .form .form-element button {
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: var(--charcoalgray);
+    color: var(--whisper);
+    border-radius: 10px;
+    cursor: pointer;   
+}
+
+.popup .form .form-element a{
+    display: block;
+    text-align: right;
+    font-size: 15px;
+    color: #1a79ca;
+    text-decoration: none;
+    font-weight: 000;
+}
+
+
+.Regcontainer .user-details .input-box select option:hover {
+    background-color: #9b59b6; /* Change to your desired hover background color */
+    color: var(--white); /* Change to your desired hover text color */
+}
+
+/* Style for the dropdown focus and valid states */
+.Regcontainer .user-details .input-box select:focus,
+.Regcontainer .user-details .input-box select:valid {
+    border-color: rgb(224, 15, 144);
+    
+}
+
+
+
+
+
+.Regcontainer .user-details .input-box select{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--lightgray);
+    border-radius: 5px;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 1px;
+    transition: all 0.3s ease;
+    background-color: var(--white);
+    text-align: center;
+    z-index: 1;
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: var(--whisper); /*dropdown background*/
+    color:var(--darkgray);   /*font color dropdown change*/
+    
+}
+
+
+.Regcontainer .input-box select{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--lightgray);
+    border-radius: 5px;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 1px;
+    transition: all 0.3s ease;
+    background-color: var(--white);
+    text-align: center;
+    z-index: 1;
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: var(--whisper); /*dropdown background*/
+    color:var(--darkgray);   /*font color dropdown change*/
+    /* position: relative; */
+    
+}
+
+
+
+
+
+.Mapcontainer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Mapcontainer h1{
+    color: #333;
+    margin-bottom: 60px;
+
+}
+
+
+.Mapcontainer iframe{
+    width: 100%;
+    height: 500px;
+    /* filter: invert(100%); */    /*for dark mode */
+
+}
+
+
+
+
+
+
 
 
 
@@ -567,14 +817,14 @@ header .navbar a:hover{
 
 .footer .box-container .box p{
     font-size: 1.5rem;
-    color: #666;
+    color: var(--gray);
     padding:.7rem 0;
 }
 
 .footer .box-container .box a{
     display: block;
     font-size: 1.5rem;
-    color: #666;
+    color: var(--gray);
     padding:.7rem 0;
 }
 
@@ -595,7 +845,7 @@ header .navbar a:hover{
     padding-top: 2rem;
     text-align: center;
     border-top: .1rem solid rgba(0, 0, 0, .1);
-    color:#666;
+    color:var(--gray);
 
 }
 
@@ -669,7 +919,7 @@ section{
 header .navbar{
     position: absolute;
     top: 100%; left:0; right: 0;
-    background: #fff;
+    background: var(--white);
     border-top: .1rem solid rgba(0, 0, 0, .2);
     border-bottom: .1rem solid rgba(0, 0, 0, .2);   
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -702,8 +952,199 @@ header .navbar a{
 
 
 
+
+
+
+
+
+
+.Registration-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.Regcontainer{
+    max-width:800px;
+    width: 100%;
+    background: var(--white);
+    padding: 25px 30px;
+    border-radius:5px ;
+    border: 1px solid var(--silver);
+
+}
+
+.Regcontainer .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.Regcontainer .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    /* height: 3px;
+    width: 30px; */
+    background: linear-gradient(90deg, var(--violet), var(--pink));
+}
+
+.Regcontainer Regform .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+    font-size: 13px;
+    color: var(--gradient); /*font color*/
+    
+    
+}
+Regform .user-details .input-box{
+    margin: 20px 0 12px 0;
+    
+    width: calc(100% / 2 - 20px);
+}
+
+
+.user-details .input-box .details{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.user-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--lightgray);
+    border-radius: 5px;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 1px;
+    transition: all 0.3s ease;
+    color: var(--darkgray); 
+    background-color: var(--white);
+}
+
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+    border-color: var(--pink);;
+}
+
+Regform .gender-details .gender-title{
+    font-size: 20px;
+    font-weight: 500; /*gender font*/
+   
+}
+
+Regform .gender-details .category{
+    display: flex;
+    width: 80%;
+    margin: 14px 0;
+    justify-content: space-between;
+   font-size: 15px;
+   color:var(--charcoalgray); /*font color*/
+   font-weight: 500;
+}
+
+.gender-details .category label{
+    display: flex;
+    align-items: center;
+    
+}
+
+.gender-details .category .dot{
+    height: 18px;
+    width: 18px;
+    background: var(--gainsboro);
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 5px solid transparent;
+    transition: all 0.3s ease;
+}
+
+#dot-1:checked ~ .category label .one,
+#dot-2:checked ~ .category label .two,
+#dot-3:checked ~ .category label .three{
+    border-color: var(--gainsboro);
+    background: var(--pink);
+
+}
+
+Regform input[type="radio"]{
+    display: none;
+} 
+
+Regform .button{
+    height: 45px;
+    margin: 35px 0;
+
+}
+
+Regform .button input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, var(--violet), var(--pink));
+}
+
+Regform .button input:hover{
+    background: linear-gradient(-135deg, var(--violet), var(--pink));
+}
+
+@media (max-width: 584px){
+    .Regcontainer{
+      max-width: 100%px;  
+    }
+    Regform .user-details .input-box{
+        margin: 15px;
+        width: 100%;
+    }
+
+    Regform .gender-details .category{
+        width: 100%;
+    }
+
+    .Regcontainer Regform .user-details{
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    .user-details::-webkit-scrollbar{
+        width: 0;
+    }
+     .input-box select{
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+
+
+
+/* map */
+
 @media (max-width: 768px) {
-    #theme-switch {
-        display: block;
+    .Mapcontainer {
+        height: auto;
+    }
+
+    .Mapcontainer iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .Mapcontainer iframe {
+        height: 200px;
     }
 }
